@@ -10,7 +10,7 @@ Introduction, syllabus, expectations, and overview of R.
 
 ## Resources
 R:
-* R tutorial/stats http://www.cyclismo.org/tutorial/R/index.html
+* R tutorial/stats http://www.cyclismo.org/tutorial/R/
 * R project introduction http://cran.r-project.org/doc/manuals/R-intro.html
 
 ## Notes for Students
