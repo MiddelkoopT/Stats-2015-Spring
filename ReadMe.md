@@ -26,7 +26,7 @@ Do's
 * Do it yourself the first time. (tables, calculate, then use the function)
 * Ask why.
 
-DON'Ts
+Don'ts
 * Don't guess.
 * Don't use your calculator.
 * Don't copy and paste.
@@ -35,3 +35,6 @@ DON'Ts
 There are no stupid questions.
 
 There are no proofs, but I expect you to understand where everything comes from (just not necessarily why)
+
+## References
+"Applied Statistics and Probability for Engineers," 5th Edition By Douglas C. Montgomery and George C. Runger.  March 2010. http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP001610,subjectCd-ST23.html
