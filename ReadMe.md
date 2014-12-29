@@ -3,6 +3,10 @@
 ## First Week
 
 Introduction, syllabus, expectations, and overview of R.
+ * Download and install R http://cran.rstudio.com/bin/windows/base/
+   * Direct link for windows 64 bit http://cran.rstudio.com/bin/windows/base/R-3.1.2-win.exe
+ * Download and install RStudio http://www.rstudio.com/products/rstudio/download/ 
+   * Direct link for windows 64 bit http://download1.rstudio.org/RStudio-0.98.1091.exe
 
 ## Resources
 R:
