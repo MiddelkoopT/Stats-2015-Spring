@@ -37,4 +37,5 @@ There are no stupid questions.
 There are no proofs, but I expect you to understand where everything comes from (just not necessarily why)
 
 ## References
-"Applied Statistics and Probability for Engineers," 5th Edition By Douglas C. Montgomery and George C. Runger.  March 2010. http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP001610,subjectCd-ST23.html
+ * "Applied Statistics and Probability for Engineers," 5th Edition By Douglas C. Montgomery and George C. Runger.  March 2010. http://www.wiley.com/WileyCDA/WileyTitle/productCd-EHEP001610,subjectCd-ST23.html
+ * FE Reference Handbook: http://ncees.org/exams/study-materials/download-fe-supplied-reference-handbook/
