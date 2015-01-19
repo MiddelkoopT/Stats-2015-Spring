@@ -9,7 +9,7 @@ Introduction, syllabus, expectations, and overview of R.
    * Direct link for windows 64 bit http://download1.rstudio.org/RStudio-0.98.1091.exe
 
 ## Resources
-R:
+
 * R tutorial/stats http://www.cyclismo.org/tutorial/R/
 * R project introduction http://cran.r-project.org/doc/manuals/R-intro.html
 
