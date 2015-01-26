@@ -91,14 +91,3 @@ The term (n-1) is used in the sample since we use $\bar x$ (xb).  This is also b
 ### Sample Range.
 
 For completeness the sample range r=max(x)-min(x), which is practically R code and is 1.3.
-
-## Example (6-2)
-
-Got data?
-```{r}
-#ch06 <- read.csv("http://raw.github.com/MiddelkoopT/Stats-2015-Spring/master/data/5e/ch06.csv",header=TRUE)
-#nrow(ch06)
-#names(ch06)
-#x <- ch06$Table6.2 ; x
-```
-
