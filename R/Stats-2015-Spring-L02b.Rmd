@@ -2,5 +2,18 @@
 
 ```{r}
 ch06 <- read.csv("data/5e/ch06.csv",header=TRUE)
+nrow(ch06)
+names(ch06)
+x <- na.omit(ch06$Table6.2)
 
+# data is ready.
+plot(x)
+stem(x)
+
+hist(x)
+hist(x,breaks=9)
+
+bins <- seq(70,250,20) ; bins
+hist(x,breaks=bins) -> h ; plot(h)
+h
 ```
