@@ -1,0 +1,6 @@
+# "Stats-2015-Spring-L02"
+
+```{r}
+ch06 <- read.csv("data/5e/ch06.csv",header=TRUE)
+
+```
