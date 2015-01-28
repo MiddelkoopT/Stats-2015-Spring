@@ -76,3 +76,10 @@ h$density
 boxplot(x)
 summary(x)
 ```
+
+### Time Sequence Plots(6-5)
+```{r}
+plot(x)
+plot(x,type='l')
+
+```
