@@ -21,6 +21,9 @@ x <- ch06$Example6.4Strength ; x
 x+1
 # Due to the way the data is release it fill's in NA's on us.
 x <- na.omit(ch06$Table6.2) ; x
+# always look at the data.
+plot(x)
+mean(x) ; sd(x)
 ```
 
 ### Stem-And-Leaf (6-2)
