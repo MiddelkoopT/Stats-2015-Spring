@@ -3,7 +3,11 @@ Engineering Statistics (IMSE 4410) Spring 2015.
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
 ## Homework H02 
-Chaper 6 (5e): 2, 4, 5, 9 and 11 (by hand, by calcuated R, by R function), 13
+Chapter 6 (5e): 2, 4, 5, 9 and 11 (by hand, by calculated R, by R function), 13
+
+Chapter 6 (5e): 23, 43, 33, 49, 53.
+
+### Section 6-1
 
 ```{r}
 #ch06 <- read.csv("http://raw.github.com/MiddelkoopT/Stats-2015-Spring/master/data/5e/ch06.csv",header=TRUE)
@@ -39,7 +43,63 @@ sd(x)
 ```{r}
 # 6-11
 x <- na.omit(ch06$EX.6.11);
-# Simlar to 6-9; verify solution with text.
+# Similar to 6-9; verify solution with text.
 mean(x)
 sd(x)
+```
 
+### Section 6-2 and 6-3
+
+```{r}
+# 6-23
+x <- na.omit(ch06$EX.6.23); 
+stem(x)
+summary(x)
+# It might survive, but not all that likely.
+# Statistics is more than just stat's, it's about making decisions.
+# Context is important.
+
+# 6-43
+h <- hist(x,breaks=8); plot(h) # not exactly 8
+h
+hist(x,breaks=16)
+
+# Yes similar
+
+# 6-33
+# Note it is Ex not EX, they are not consistent.
+x <- na.omit(ch06$Ex.6.33); 
+stem(x)
+summary(x)
+mean(x)
+sd(x)
+quantile(x,seq(0,1,0.1))
+# 276.27
+
+# 6-49
+hist(x)
+```
+
+### Section 6-4
+
+```{r}
+# 6-53
+# Back to EX...
+x <- na.omit(ch06$EX.6.53); 
+xb <- mean(x) ; xb
+s <- sd(x); s
+s2 <- var(x) ; s2
+boxplot(x)
+
+# 6-71
+# names(ch06)
+# A data frame allows you to put data on a single "tab" in spreadsheet ling
+d <- data.frame(year=na.omit(ch06$EX.6.71.year),num=na.omit(ch06$EX.6.71.No.of))
+n <- nrow(d) ; n
+d$year
+d$num
+
+# and things get nicer to plot.
+plot(num~year,d,type='b')
+# Reproduce Figure 6-18 to check the solution (look at the notes for plotting table 6-2)
+```
