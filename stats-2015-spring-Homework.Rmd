@@ -2,6 +2,6 @@
 Engineering Statistics (IMSE 4410) Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
-## Homeworks
-Chaper 6 (5e): 2, 4, 5, 9 and 11 (by hand, by calcuated R, by R function), 13
-
+## Homework H02
+H02a: Chapter 6 (5e): 2, 4, 5, 9 and 11 (by hand, by calculated R, by R function), 13
+H02b: Chapter 6 (5e): 23, 43, 33, 49, 53.
