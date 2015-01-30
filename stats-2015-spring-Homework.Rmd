@@ -4,4 +4,5 @@ Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
 ## Homework H02
 H02a: Chapter 6 (5e): 2, 4, 5, 9 and 11 (by hand, by calculated R, by R function), 13
+
 H02b: Chapter 6 (5e): 23, 43, 33, 49, 53.
