@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # Introduction to Engineering Statistics and R 
 Engineering Statistics (IMSE 4410) Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
@@ -15,7 +18,7 @@ plot(x)
 hist(x)
 # Close, lets make the numbers a bit larger 
 x <- runif(100000)
-h <- hist(x) ; plot(h)
+h <- hist(x)
 summary(x)
 # Looks good
 
