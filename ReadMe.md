@@ -7,6 +7,8 @@ Introduction, syllabus, expectations, and overview of R.
    * Direct link for windows 64 bit http://cran.rstudio.com/bin/windows/base/R-3.1.2-win.exe
  * Download and install RStudio http://www.rstudio.com/products/rstudio/download/ 
    * Direct link for windows 64 bit http://download1.rstudio.org/RStudio-0.98.1091.exe
+ * Optional Download and install MikTeX for RStudio PDF support http://miktex.org/download/
+   * Direct link for windows 64 bit http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe
 
 ## Resources
 
