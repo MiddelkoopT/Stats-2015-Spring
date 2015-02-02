@@ -1,0 +1,42 @@
+---
+output: pdf_document
+---
+# "Stats-2015-Spring-L03a"
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch06 <- read.csv("data/5e/ch06.csv",header=TRUE)
+nrow(ch06)
+
+# Uniform
+x <- runif(20); x
+mean(x)
+sd(x)
+plot(x)
+hist(x)
+hist(runif(100000))
+
+x <-runif(100,min=1,max=7)
+hist(x,breaks=0:8)
+0:8
+
+# Density function.
+dunif(4,1,7)
+punif(0,1,7)
+punif(7,1,7)
+punif(4,1,7)
+
+punif(3,min=1,max=7) - punif(2,1,7)
+
+pnorm(1.5)
+
+pnorm(-1.5,lower.tail=FALSE)
+
+# the 68%
+pnorm(1)-pnorm(-1)
+pnorm(-6,lower.tail=TRUE)+pnorm(6,lower.tail=FALSE)
+
+pnorm(5.5,mean=5,sd=2)
+
+```
