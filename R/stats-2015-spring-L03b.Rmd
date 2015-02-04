@@ -1,0 +1,24 @@
+# "Stats-2015-Spring-L03a"
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch08 <- read.csv("data/5e/ch08.csv",header=TRUE)
+nrow(ch08)
+
+# MLE for uniform = ahat=max(x)
+
+a <- 8
+d <- runif(10,0,a) ; d
+hist(d)
+A <- max(d) ; A
+
+max(runif(10000,0,a))
+
+d <- replicate(10000,max(runif(1,0,a))) ; hist(d)
+
+d <- replicate(10000,max(runif(10,0,a))) ; hist(d)
+
+
+```
+

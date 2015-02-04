@@ -30,7 +30,7 @@ $$L(\theta)=f(x_1;\theta) \cdot f(x_2,\theta) \cdot ... \cdot f(x_n;\theta)$$
 For the normal distribution the MLE and Method of moments are the same
 and are $\mu=\bar x$ and 
 
-$$\sigma^2 = {1 \over n  \sum (x_i-xbar)^2}$$.
+$$\sigma^2 = {1 \over n  \sum (x_i-\bar x)^2}$$.
 
 This material is too sophisticated to cover in a single class
 Practically we will not be developing our own MLE functions.
