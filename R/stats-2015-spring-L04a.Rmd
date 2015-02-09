@@ -1,0 +1,32 @@
+# "Stats-2015-Spring-L04a"
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch08 <- read.csv("data/5e/ch08.csv",header=TRUE)
+nrow(ch08)
+
+x <- c(64.1,64.7,64.5,64.6,64.5,64.3,64.6,64.8,64.2,64.3)
+plot(x)
+length(x) -> n ; n
+xb <- mean(x) ; xb
+s <- sd(x) ; s
+
+qnorm(0.975,lower.tail=TRUE)
+qnorm(0.025,lower.tail=FALSE)
+alpha <- (1-0.95) ; alpha
+qnorm(alpha/2,lower.tail=FALSE)
+
+sigma <- 1
+me <- qnorm(alpha/2,lower.tail=FALSE) * sigma/sqrt(n) ; me
+
+l <- xb - me ; l
+u <- xb + me ; u
+
+# work on pnorm/qnorm
+pnorm(1.5)
+1-pnorm(1.5)
+pnorm(-1.5)
+pnorm(1.5,lower.tail=FALSE)
+
+```
