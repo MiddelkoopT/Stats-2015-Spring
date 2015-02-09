@@ -28,7 +28,7 @@ that only the statistic under consideration is left in the center, $P(L \le \mu 
 
 It is easy to see where it came from, but no so easy to derive them.
 
-**For mean unknown, and known standard deviation**
+**For the norm, mean unknown, and known standard deviation**
 
 $$P( -z_{\alpha/2} \le { \bar X - \mu \over \sigma/{\sqrt n} } \le +z_{\alpha/2})$$
 which is converted to
@@ -39,6 +39,7 @@ Note the definition of $z_\alpha$ (sign and in terms of $\alpha$)
 
 ```{r}
 ## Example 8.1 in the text.
+x <- c(64.1,64.7,64.5,64.6,64.5,64.3,64.6,64.8,64.2,64.3) # mean(x) ; length(x)
 alpha <- (1-0.95); n <- 10 ; sigma <- 1 ; xb <- 64.46
 
 # this is not an opportunity for you to copy at home.
@@ -66,36 +67,23 @@ ch08 <- read.csv("data/5e/ch08.csv",header=TRUE)
 # Example 8.4 Mercury Contamination.
 # we will use the na.omit function and data.frames for all sample data.
 d <- na.omit(data.frame(concentration=ch08$Example8.4))
-n <- nrow(d) ; n
-# [1] 53
-xb <- mean(d$c) ; xb
-# [1] 0.5249811
-s <- sd(d$c) ; s
-# [1] 0.3486253
+n <- nrow(d) ; n ## [1] 53
+xb <- mean(d$c) ; xb ## [1] 0.5249811
+s <- sd(d$c) ; s ## [1] 0.3486253
 
 # Note the difference between Q1 and Q3...
 summary(d)
-
 hist(d$c)
-
-# strange
-#?hist
-hist(d$c,breaks=16)
-
-# not very close... 
-# different ways of doing things.
-hist(d$c,breaks=seq(0,1.6,0.1)-0.05)
+# This is how the text does it
 hist(d$c,breaks=seq(0,1.6,0.1)-0.05,right=FALSE)
 
-## Back to the confidence interval.
-alpha <- 1-0.95
 ```
 
-**Confidence interval on mu with unknown sigma^2 and large n**
+**Confidence interval on mean with unknown standard deviation and large n**
 
 * Random variable: $Z= {\bar X-\mu \over S/{\sqrt n} }$
 * Distribution: approximately the standard norm
-* Tails: alpha/2 is the upper tail
+* Tails: $\alpha/2$ is the upper tail
 * Margin of  error:
 
 ```{r eval=FALSE}
@@ -104,6 +92,7 @@ xb - me ; xb + me
 ```
 
 ```{r}
+alpha <- 1-0.95
 me <- qnorm(alpha/2,lower.tail=FALSE)*s/sqrt(n) ; me
 xb - me 
 xb + me
@@ -122,6 +111,7 @@ qqnorm(d$c,datax=TRUE) ; qqline(d$c,datax=TRUE)
 pnorm(-1.5) 
 pnorm(1.0) 
 qnorm(0.05)
+qqnorm(rnorm(10000),datax=TRUE)
 ```
 
 ## Review of CI's
@@ -181,24 +171,23 @@ me <- qt(alpha/2,n-1,lower.tail=FALSE)*s/sqrt(n)
 xb - me ## [1] 12.13807
 xb + me ## [1] 15.2892
 
-# Nice when a plan comes together.
-hist(d$load)
 # does not look that good, small sample size
+hist(d$load)
 # This looks better (datax=TRUE rotates the graph to look like the text)
 qqnorm(d$load,datax=TRUE) ; qqline(d$load,datax=TRUE)
 
 ## one could almost guess this button.
 boxplot(d$load)
-?boxplot
+#?boxplot
 ## See Chapter 6-4: Box Plots (quartiles)
 ```
 
 **Confidence interval on the variance with unknown variance from a normal population**
 
 * Random Variable: $\chi^2={(n-1) S^2) \over \sigma^2}$ (Chi square)
-* Distribution: $\chio^2$ with $n-1$ degrees of freedom
-* Tails: $\chi^2_{\alpha/2,n-1}$ (upper) and $\chi^2_{alpha/2}$ (lower) $\chi^2$ tails of the square distribution
-* Two sideded Confindence Interval:
+* Distribution: $\chi^2$ with $n-1$ degrees of freedom
+* Tails: $\chi^2_{\alpha/2,n-1}$ (upper) and $\chi^2_{\alpha/2,n-1}$ (lower) $\chi^2$ tails of the $\chi^2$ distribution.
+* Two sided Confidence Interval:
 ```{r eval=TRUE}
 l <- (n-1)*s^2/qchisq(alpha/2,n-1,lower.tail=FALSE)
 u <- (n-1)*s^2/qchisq(alpha/2,n-1,lower.tail=TRUE)
