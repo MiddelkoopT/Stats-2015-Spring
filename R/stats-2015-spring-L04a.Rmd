@@ -30,3 +30,40 @@ pnorm(-1.5)
 pnorm(1.5,lower.tail=FALSE)
 
 ```
+
+Week 04b class notes.
+
+```{r}
+ch08 <- read.csv("data/5e/ch08.csv",header=TRUE)
+nrow(ch08)
+names(ch08)
+d <- na.omit(data.frame(concentration=ch08$Example8.4))
+length(d)
+n <- nrow(d) ; n
+names(d)
+
+xb <- mean(d$con) ; xb
+plot(d$con)
+d$con
+hist(d$con)
+
+## CI on mean, unknown s, large n.
+alpha <- (1-0.95)
+me <- qnorm(alpha/2,lower.tail=FALSE)*sd(d$con)/sqrt(n)
+
+u <- xb+me ; u
+l <- xb-me ; l
+
+## Diagnostics
+hist(d$con)
+qqnorm(d$con,datax=TRUE) ; qqline(d$con,datax=TRUE)
+
+# Expected value.
+qqnorm(rnorm(10000),datax=TRUE)
+
+# end of class W04b
+
+
+```
+
+
