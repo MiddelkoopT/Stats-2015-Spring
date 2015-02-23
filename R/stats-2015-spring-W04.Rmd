@@ -2,7 +2,7 @@
 IMSE 4410 Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
-## Chapter 8, Week 4
+## Confidence Intervals (Chapter 8, Week 4)
 
 ### Statistical Intervals for a Single Sample
 
@@ -114,7 +114,7 @@ qnorm(0.05)
 qqnorm(rnorm(10000),datax=TRUE)
 ```
 
-## Review of CI's
+### Review of CI's
 
 **Confidence interval on the mean with known standard deviation, normal population.**
 
