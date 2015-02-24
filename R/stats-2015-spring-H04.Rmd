@@ -2,7 +2,7 @@
 Engineering Statistics (IMSE 4410) Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
-## Homework H03
+## Homework H04
 Chapter 8 (5e): 
 
 1. Example 8-4: Mercury Contamination.
