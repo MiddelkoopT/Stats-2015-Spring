@@ -15,7 +15,8 @@ Introduction, syllabus, expectations, and overview of R.
 ## Using RStudio
  * Download and install the above software
  * Obtain a copy of the GitHub project by either downloading the zip (easiest), using the GitHub client (simplest when it works, press "clone in desktop"), or installing Git directly (best, clone inside RStudio).
- * Open RStudio and open the project (File > Open Project) under Stats-2015-Spring/R/Stats-2015-Spring.Rproj
+  * To download/clone in RStudio using git select File > New Project > Version Control > Git and enter "https://github.com/MiddelkoopT/Stats-2015-Spring" in Repository URL.
+ * Open RStudio and open the project (File > Open Project) and select Stats-2015-Spring/R/Stats-2015-Spring.Rproj (Windows will often hide the Rproj)
 
 ## Resources
 
