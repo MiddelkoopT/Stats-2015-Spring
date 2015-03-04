@@ -9,6 +9,16 @@ Introduction, syllabus, expectations, and overview of R.
    * Direct link for windows 64 bit http://download1.rstudio.org/RStudio-0.98.1091.exe
  * Optional Download and install MikTeX for RStudio PDF support http://miktex.org/download/
    * Direct link for windows 64 bit http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe
+ * Optional Download and install git support http://git-scm.com/downloads/
+   * Direct link for windows https://github.com/msysgit/msysgit/releases/download/Git-1.9.5-preview20141217/Git-1.9.5-preview20141217.exe
+   * On the "Adjusting your PATH Environment" screen select "Use Git from the Windows Command Prompt"
+
+## Using RStudio
+ * Download and install the above software
+ * Obtain a copy of the GitHub project by either downloading the zip (easiest), using the GitHub client (simplest when it works, press "clone in desktop"), or installing Git directly (best, clone inside RStudio).
+  * To download/clone in RStudio using git select File > New Project > Version Control > Git and enter "https://github.com/MiddelkoopT/Stats-2015-Spring" in Repository URL.
+ * Open RStudio and open the project (File > Open Project) and select Stats-2015-Spring/R/Stats-2015-Spring.Rproj (Windows will often hide the Rproj)
+ * To view a Rmd file push the "Knit HTML" button.  To open it up inside RStudio click the down arrow to the right of "Knit HTML" and select "View in Pane."
 
 ## Resources
 
