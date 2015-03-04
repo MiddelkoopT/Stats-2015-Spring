@@ -11,6 +11,7 @@ Introduction, syllabus, expectations, and overview of R.
    * Direct link for windows 64 bit http://mirrors.ctan.org/systems/win32/miktex/setup/basic-miktex-2.9.5105-x64.exe
  * Optional Download and install git support http://git-scm.com/downloads/
    * Direct link for windows https://github.com/msysgit/msysgit/releases/download/Git-1.9.5-preview20141217/Git-1.9.5-preview20141217.exe
+   * On the "Adjusting your PATH Environment" screen select "Use Git from the Windows Command Prompt"
 
 ## Using RStudio
  * Download and install the above software
