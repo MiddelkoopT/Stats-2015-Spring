@@ -134,18 +134,3 @@ pnorm(48.42,mean=mu1,sd=sigmaxb,lower.tail=TRUE)   ## [1] 0.2507918
 
 * "Computing the Standard Deviation of Sample Means," https://www.utdallas.edu/~metin/Ba3352/qch9-10.pdf
 
-
-## Hypothesis Testing Part II
-
-Procedure (Section 9-1.6):
-
-1. Identify parameter of interest.
-2. Formulate H0
-3. Formulate H1
-4. Determine test statistic.
-5. State H0 rejection criteria.
-6. Calculate
-7. Reject H0 or fail to reject H0.
-8. Conclusions
-
-### Tests on the mean of a normal distribution, variance known.
