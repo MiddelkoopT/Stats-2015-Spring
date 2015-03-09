@@ -3,7 +3,29 @@ Engineering Statistics (IMSE 4410) Spring 2015.
 Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
 
 ```{r}
+
+qnorm(0.025,lower.tail=FALSE)
+pnorm(0.54,lower.tail=FALSE)
+
+pnorm(50.784,mean=49,sd=2/sqrt(25),lower.tail=FALSE)
+pnorm(4.46,lower.tail=FALSE)
+
+beta <- pnorm(49.216,mean=49,sd=2/sqrt(25),lower.tail=FALSE) - pnorm(50.784,mean=49,sd=2/sqrt(25),lower.tail=FALSE) ; beta
+
+
 ch09 <- read.csv("data/5e/ch09.csv",header=TRUE)
 nrow(ch09)
+d <- na.omit(ch09$Example9.6) ; n <- length(d) ; n
+plot(d)
+qqnorm(d,datax=TRUE); qqline(d,datax=TRUE)
+qqnorm(rnorm(5000),datax=TRUE)
+xb <- mean(d) ; xb
+s <- sd(d) ; s
+mu0 <- 0.82
+t0 <- (xb-mu0)/(s/sqrt(n)) ; t0
+pt(t0,n-1,lower.tail=FALSE)
+
+t.test(d,mu=0.82, alternative="greater")
+
 
 ```
