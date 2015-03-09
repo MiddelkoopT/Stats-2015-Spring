@@ -1,0 +1,9 @@
+# "Stats-2015-Spring-L05a"
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch09 <- read.csv("data/5e/ch09.csv",header=TRUE)
+nrow(ch09)
+
+```
