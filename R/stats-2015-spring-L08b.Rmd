@@ -1,0 +1,23 @@
+# Stats-2015-Spring-L05a
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch09 <- read.csv("data/5e/ch09.csv",header=TRUE)
+d <- na.omit(ch09$Example9.6) ; n <- length(d) ; n
+
+xb <- mean(d) ; s <- sd(d) ; s
+n <- 15 ; alpha <- 0.05
+power <- 0.80 ; delta <- 0.02
+power.t.test(n=NULL,sd=s,power=power,delta=delta,sig.level=alpha, type="one.sample", alternative="one.sided")
+
+power.t.test(n=n,sd=s,power=NULL,delta=delta,sig.level=alpha, type="one.sample", alternative="one.sided")
+
+n <- 20; alpha <- 0.05 ;  s <- sqrt(0.0153) ; s0 <- sqrt(0.01)
+x0 <- (n-1)*s^2/s0^2 ; x0
+
+qchisq(0.05,n-1,lower.tail=FALSE)
+pchisq(x0,n-1,lower.tail=FALSE)
+
+
+```
