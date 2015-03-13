@@ -1,0 +1,142 @@
+# Engineering Statistics
+IMSE 4410 Spring 2015. 
+Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Goodness of Fit (Chapter 9-7, Week 8, Graduate)
+
+* What if the underlying distribution is unknown?
+* Collect $n$ samples and place them in $k$ bins or intervals (can be unequal).
+* $O_i$ is the observed frequency.
+* $E_i$ is the expected frequency of the hypothesized distribution with $p$ parameters.
+* The test statistic follows the $X^2$ (Chi-sq) distribution and is
+* $X^2_0=\sum_{i=0}^k {(O_i-E_i)^2 \over E_i}$
+* with $k-p-1$ degrees of freedom.
+* There are issues when the frequencies are small (see text).
+
+```{r}
+# Example 9-12: Circuit Board Defects
+
+# Hypothesized distribution: Poisson distribution
+# Sample:
+n <- 60
+d <- data.frame(defects=c(0,1,2,3),frequency=c(32,15,9,4))
+d
+
+# The sum of the frequencies and n should match.
+sum(d$frequency) ## [1] 60
+
+# Make the row names match to reduce the possibility of error.
+rownames(d) <- d$defects ; d
+```
+
+We have $O_i$, we now need to build $E_i$
+
+We estimate the mean of the Poisson distribution from the sample mean (xb)
+$$\bar x = E(X)=\lambda T$$ where T is the unit basis, in this case Single Board
+
+```{r}
+xb <- sum(d$defects*d$frequency)/n ; xb
+# [1] 0.75
+
+# We use this to compute the expected probability, 
+# and by extension the frequency, we will do this directly using R.
+
+# Compute the bin frequencies.
+d$p <- dpois(d$defects,lambda=xb) ; d$p
+
+# We note the last one should contain all frequencies, P(X>=3)
+# To keep things straight we use the label, not the row number 
+d['3',]$p <- 1-sum(dpois(0:2,lambda=xb))
+d['3',]
+
+# We can also get to it by value
+d[d$defects==3,]
+
+# check our answer
+sum(d$p) ## [1] 1
+
+# now compute Ei
+d$expected <- d$p*n ; d 
+
+# Following the text we need to combine 2 and 3 since bin 3 is small.
+# Create a new table with correct number of rows
+h <- d[d$defects <= 2,]
+
+# Last two rows
+d[d$defects >= 2,]
+
+sum(d[d$defects >= 2,]) ## [1] 28.57487
+
+# Combine last two rows, replacing last row.
+h['2',] <- colSums(d[d$defects >= 2,]) ; h
+
+# Fixup the defects column
+h['2',]$defects <- 2 ; h
+
+# This matches the text.
+
+# Check that we did everything fine.
+colSums(h)
+```
+
+Note if this was a repeated analysis you could easily make functions to do all this.
+
+Now for the hypothesis test.
+
+* H0: it is a Poisson distribution. 
+* H1: it is not a Poisson distribution.
+* Test Statistic: $X^2_0=\sum (oi-Ei)^2/Ei$
+* Reject H0 if p-value <0.05 (alpha), 3-1-1 degrees of freedom, upper tail
+* Calculations:
+
+```{r}
+chisq0 <- sum((h$frequency-h$expected)^2/h$expected) ; chisq0 ## [1] 2.962772
+
+pv <- pchisq(chisq0,nrow(h)-1-1,lower.tail=FALSE) ; pv ## [1] 0.08520178
+```
+
+pv > 0.05 so we fail to reject H0
+
+There is no strong evidence to say the distribution is not Poisson.
+
+## Example 9-13.
+
+* Parameter of interest: form of the distribution.
+* H0: the distribution is normal
+* H1: the distribution is not normal
+* Test statistic: chisq0=sum((oi-Ei)^2/Ei
+* Reject H0 if: pv < 0.05 (alpha), upper tail, with k-p-1 dof.
+* Calculate:
+
+```{r}
+d <- data.frame(observed=c(12,14,12,13,12,11,12,14),expected=c(12.5)) ; d
+chisq0 <- sum((d$observed-d$expected)^2/d$expected) ; chisq0 ## [1] 0.64
+
+# degrees of freedom (k-p-1)
+dof <- nrow(d)-2-1 ; dof ## [1] 5
+
+pv <- pchisq(chisq0,dof,lower.tail=FALSE) ; pv ## [1] 0.9860987
+```
+
+* Result: pv > 0.05 so we fail to reject H0
+* Conclusions: There is no strong evidence to say the distribution is not normal
+
+```{r}
+# How do we construct the  interval class
+xb <- 5.04 ; s <- 0.08; n <- 100
+k <- 8 ; ei <- n*1/k ; ei
+
+# Compute the interval (check with text)
+qnorm(1/k,mean=xb,sd=s,lower.tail=TRUE) ## [1] 4.947972
+
+# We now need a sequence to generate our intervals
+#?seq
+seq(0,1,by=1/k)
+
+# generate our intervals and data.frame.
+d <- data.frame(pl=seq(0,1-1/k,by=1/k),pu=seq(0+1/k,1,by=1/k)) ; d
+d$lower <- qnorm(d$pl,mean=xb,sd=s)
+d$upper <- qnorm(d$pu,mean=xb,sd=s) 
+d
+```
+
