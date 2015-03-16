@@ -1,0 +1,43 @@
+# Stats-2015-Spring-L10a
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch11 <- read.csv("data/5e/ch11.csv",header=TRUE)
+nrow(ch11)
+
+d <- na.omit(data.frame(x=ch11$Example11.1Level,y=ch11$Example11.1Purity)) ; n <- nrow(d) ; n
+#names(ch11)
+names(d)
+d$x
+d$y
+
+plot(y~x,d)
+x <- d$x ; y <- d$y
+xb <- mean(x) ; xb
+yb <- mean(y) ; yb
+
+
+sxx <- sum((x - xb)^2) ; sxx
+sxy <- sum((x-xb)*(y-yb)) ; sxy
+
+bh1 <- sxy/sxx ; bh1
+bh0 <- yb-bh1*xb ; bh0
+
+plot(y~x,d) ; abline(bh0,bh1)
+
+yh <- bh0+bh1*x ; yh
+
+plot(x,yh)
+
+sse <- sum((y-yh)^2) ; sse
+
+sigmahsq <- sse/(n-2) ; sigmahsq
+
+m <- lm(y~x,d) ; summary(m)
+names(m)
+
+m$fitted.values
+yh
+sqrt(sigmahsq)
+```
