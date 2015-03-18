@@ -1,5 +1,5 @@
 ---
-output: pdf_document
+output: html_document
 ---
 # Engineering Statistics
 IMSE 4410 Spring 2015. 
@@ -183,4 +183,10 @@ t0 <- bh0/sebh0 ; t0
 These are the t-values in the lm() regression.
 
 Reject H0 if $t>t_{\alpha/2,n-2}$ or p-value < $\alpha/2$
+
+```{r}
+alpha <- 0.05
+2*qt(alpha/2,n-2,lower.tail=FALSE)
+summary(m)
+```
 

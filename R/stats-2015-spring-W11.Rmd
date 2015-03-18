@@ -1,5 +1,5 @@
 ---
-output: pdf_document
+output: html_document
 ---
 # Engineering Statistics
 IMSE 4410 Spring 2015. 
@@ -36,7 +36,7 @@ model and the natural error term (NID!).
 * $SS_T$ (sst), total corrected sum of squares;
 * $SS_R$ (ssr), regression sum of squares;
 * $SS_E$ (sse), error sum of squares;
-* $SS_T = SS_R + SS_T$ (sst = ssr + sse)
+* $SS_T = SS_R + SS_E$ (sst = ssr + sse)
 
 Know theses, understand theses, you should be able to think it out on a test.
 
@@ -75,3 +75,8 @@ pf(f0,1,n-2,lower.tail=FALSE) # [1] 1.227314e-09
 We reject H0 concluding that $\hat\beta_1$ is significant with a p-value of very small.
 
 It can be shown that the t-statistic is the same of the f-statistic.
+
+```{r}
+m <- lm(y~x,d) ; summary(m)
+anova(m)
+```
