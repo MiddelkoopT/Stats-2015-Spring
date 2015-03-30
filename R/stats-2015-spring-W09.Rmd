@@ -2,7 +2,7 @@
 IMSE 4410 Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
-## Linear Regression (Chapter 11, Week 10)
+## Linear Regression (Chapter 11, Week 9)
 
 Linear regression is developing a model to explain the variation in sample data.  Before we assumed a homogeneous population of some distribution and asked questions about the parameters of this population (point estimation, confidence interval, and hypothesis test).
 
