@@ -118,7 +118,7 @@ plot(sort(pnorm(d1)))
 plot(x,e) ; abline(0,0)
 ```
 
-### $R^2$ and Adjucted $R^2$
+### $R^2$ and Adjusted $R^2$
 
 This is simply the ratio of the variance explained by the regression
 over the total variance (in some sense the percent accounted for)

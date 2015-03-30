@@ -1,0 +1,32 @@
+# Stats-2015-Spring-L10a
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+y <- c(4,9,14) ; x <- c(31,12,17)
+d <- data.frame(y=y,x=x)
+d
+plot(y~x,d)
+lm(y~x,d) -> m ; summary(m)
+anova(m)
+
+x ; y
+yb <- mean(y) ; yb
+xb <- mean(x) ; xb
+x-xb
+(x-xb)^2
+sxx <- sum((x-xb)^2) ; sxx
+sxy <- sum((x-xb)*(y-yb)) ; sxy
+bh1 <- sxy/sxx ; bh1
+bh0 <- yb - bh1 *xb ; bh0
+
+yh <- bh0 + bh1*x ; yh
+ssr <- sum((yh-yb)^2) ; ssr
+sst <- sum((y-yb)^2) ; sst
+sse <- sum((y-yh)^2) ; sse
+ssr + sse
+(y-yh)
+rsq <- ssr/sst ; rsq
+anova(m)
+
+```
