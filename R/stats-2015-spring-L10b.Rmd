@@ -1,0 +1,63 @@
+# Stats-2015-Spring-L10b
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch11 <- read.csv("data/5e/ch11.csv",header=TRUE)
+nrow(ch11)
+
+d <- na.omit(data.frame(x=ch11$Example11.1Level,y=ch11$Example11.1Purity)) ; n <- nrow(d) ; n # [1] 20
+
+y <- d$y ; x <-d$x ; n <- nrow(d) ; n # [1] 20
+yb <- mean(y) ; yb # [1] 92.1605 
+xb <- mean(x) ; xb # [1] 1.196
+sxx <- sum((x-xb)^2) ; sxx # [1] 0.68088
+sxy <- sum((y-yb)*(x-xb)) ; sxy # [1] 10.17744
+bh1 <- sxy/sxx ; bh1 # [1] 14.94748
+bh0 <- yb-bh1*xb ; bh0 # [1] 74.28331
+yh <- bh0+bh1*x #; yh
+
+plot(y~x,d)
+m <- lm(y~x,d) ; s <- summary(m) ; s
+plot(m)
+
+e <- y-yh
+plot(x,y)
+plot(yh,e)
+qqnorm(e,datax=TRUE)
+qqline(e,datax=TRUE)
+
+d1 <- rnorm(1000)
+hist(d1)
+plot(d1)
+
+plot(sort(d1))
+plot(sort(pnorm(d1)))
+
+x <- seq(0,10,0.1) ; x
+d <- data.frame(x=x, y=x^2)
+d
+
+
+lm(y~x,d) -> m ; summary(m)
+plot(y~x,d)
+abline(m$coef[1],m$coef[2])
+
+plot(m)
+
+m <- lm(y~I(x^2),d) ; summary(m)
+
+d$yh <- m$fitted ; d
+
+plot(y~x,d) ; points(yh~x,d,type='l')
+
+d <- na.omit(data.frame(x=ch11$Example11.9Vel,y=ch11$Example11.9DC)) ; n <- nrow(d) ; n
+plot(y~x,d)
+
+m <- lm(y~x,d) ; summary(m)
+plot(m)
+
+plot(y~I(1/x),d)
+m <- lm(y~I(1/x),d) ; summary(m)
+plot(m)
+```
