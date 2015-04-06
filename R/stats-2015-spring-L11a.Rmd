@@ -1,0 +1,58 @@
+# Stats-2015-Spring-L10b
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch12 <- read.csv("data/5e/ch12.csv",header=TRUE)
+nrow(ch12)
+```
+
+### Example 12.1 Wire Bond Strength.
+
+```{r}
+A <- matrix(c(1,2,3, 4,5,6),nrow=2,ncol=3,byrow=TRUE) ; A
+B <- matrix(c(2,5,3,6,4,7),nrow=3,ncol=2,byrow=TRUE) ; B
+
+#A*B
+A %*% B
+A
+
+t(A)
+
+## note the c column and the order used later.
+d <- na.omit(data.frame(y=ch12$Example12.1S,c=1,x1=ch12$Example12.1L,x2=ch12$Example12.1H))
+n <- nrow(d) ; n
+d
+
+plot(d)
+lm(y~x1+x2,d) -> m ; summary(m)
+
+d[2:4]
+X <- data.matrix(d[2:4]) ; X
+d$y
+d[1]
+y <- data.matrix(d[1])
+
+bh <- solve(t(X) %*% X ) %*% t(X) %*% y
+bh
+
+yh <- X %*% bh ; yh
+
+e <- yh - y ; e
+
+p <- ncol(d)-1 ; p
+
+sum((y-yh)^2)
+sse <- sum(e^2)
+sigmahsq <- sse/(n-p) ; sigmahsq
+summary(m) -> s
+s$sigma^2
+
+yb <- mean(d$y) ; yb
+ssr <- sum((yh-yb)^2) ; ssr
+sst <- sum((y-yb)^2) ; sst
+sse + ssr
+
+rsq <- ssr/sst ; rsq
+
+```
