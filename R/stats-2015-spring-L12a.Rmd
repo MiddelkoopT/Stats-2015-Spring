@@ -1,0 +1,68 @@
+# Stats-2015-Spring-L10b
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+```{r}
+ch12 <- read.csv("data/5e/ch12.csv",header=TRUE)
+nrow(ch12)
+```
+
+### Example 12.1 Wire Bond Strength.
+
+```{r}
+## note the c column and the order used later.
+d <- na.omit(data.frame(y=ch12$Example12.1S,c=1,x1=ch12$Example12.1L,x2=ch12$Example12.1H))
+n <- nrow(d) ; n
+k <- ncol(d)-2 ; k
+p <- k+1 ; p
+
+lm(y~x1+x2,d) -> m ; s <- summary(m) ; s
+
+X <- data.matrix(d[2:4])
+y <- data.matrix(d[1]) 
+
+bh <- solve(t(X) %*% X ) %*% t(X) %*% y ; bh
+yh <- X %*% bh ; yh
+e <- y - yh ; e
+
+sse <- sum(e^2) ; sse
+
+sigmahsq <- sse/(n-p) ; sigmahsq
+anova(m)
+sse
+names(s)
+s$sigma^2
+
+C <- solve(t(X) %*% X ) ; C
+sqrt(C[1,1]*sigmahsq)
+sqrt(diag(C)*sigmahsq)
+
+yb <- mean(y) ; yb
+ssr <- sum((yh-yb)^2) ; ssr
+
+msr <- ssr/k ; msr
+mse <- sse/(n-p) ; mse
+f0 <- msr / mse ; f0
+
+confint(m)
+
+## Wine!
+d <- na.omit(data.frame(quality=ch12$Example12.14Quality,clarity=ch12$Example12.14Clarity, aroma=ch12$Example12.14Aroma, body=ch12$Example12.14Body, flavor=ch12$Example12.14Flavor, oakiness=ch12$Example12.14Oakiness)) ; n <- nrow(d) ; n
+names(d)
+plot(d)
+m <- lm(quality~clarity+aroma+body+flavor+oakiness,d) ; summary(m)
+plot(m)
+
+m <- lm(quality~clarity,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~aroma,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~body,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~flavor,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~oakiness,d) ; s<- summary(m) ; s$f
+
+
+
+```
