@@ -105,12 +105,7 @@ mse <- sse/(n-p) ; mse # [1] 5.235158
 * Test Statistic: 
 $$F_0={SS_R/k \over SS_E/(n-p)} = {MS_R \over MS_E}$$
 
-
-## See text for test statistic, same as last time.
-## t-value, H0:betai=0, H1:betai!=0
-
 ```{r}
-
 ## Significance of regression (p=k+1)
 ## H0:b1=b2=b3...=0 H1:b1!=0 for at least one.
 msr <- ssr/(p-1) ; msr
