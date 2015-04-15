@@ -1,4 +1,4 @@
-# Stats-2015-Spring-L10b
+# Stats-2015-Spring-L12a
 Engineering Statistics (IMSE 4410) Spring 2015. 
 Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
 

@@ -1,0 +1,69 @@
+# Stats-2015-Spring-L12b
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Wine!
+```{r}
+ch12 <- read.csv("data/5e/ch12.csv",header=TRUE)
+d <- na.omit(data.frame(quality=ch12$Example12.14Quality,clarity=ch12$Example12.14Clarity, aroma=ch12$Example12.14Aroma, body=ch12$Example12.14Body, flavor=ch12$Example12.14Flavor, oakiness=ch12$Example12.14Oakiness)) ; n <- nrow(d) ; n
+names(d)
+plot(d)
+m <- lm(quality~clarity+aroma+body+flavor+oakiness,d) ; summary(m)
+plot(m)
+
+m <- lm(quality~clarity,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~aroma,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~body,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~flavor,d) ; s<- summary(m) ; s$f
+
+m <- lm(quality~oakiness,d) ; s<- summary(m) ; s$f
+
+# Flavor
+m <- lm(quality~flavor+clarity,d) ; s<- summary(m) ; s$f
+m <- lm(quality~flavor+aroma,d) ; s<- summary(m) ; s$f
+m <- lm(quality~flavor+body,d) ; s<- summary(m) ; s$f
+m <- lm(quality~flavor+oakiness,d) ; s<- summary(m) ; s$f
+
+# Oakiness
+m <- lm(quality~flavor+oakiness+clarity,d) ; s<- summary(m) ; s$f
+m <- lm(quality~flavor+oakiness+aroma,d) ; s<- summary(m) ; s$f
+m <- lm(quality~flavor+oakiness+body,d) ; s<- summary(m) ; s$f
+
+
+
+# Aroma
+m <- lm(quality~flavor+oakiness,d) ; s<- summary(m) ; s
+m <- lm(quality~flavor+oakiness+aroma,d) ; s<- summary(m) ; s
+plot(m)
+m <- lm(quality~flavor,d) ; s<- summary(m) ; s
+plot(m)
+
+
+```
+
+## Quadratic Models
+
+```{r}
+d <- na.omit(data.frame(y=ch12$Example12.12y,x=ch12$Example12.12x)) ;  n<- nrow(d) ; n
+plot(y~x,d)
+m <- lm(y~x,d) ;summary(m)
+plot(m)
+
+m <- lm(y~x+I(x^2),d) ; summary(m)
+plot(m)
+m <- lm(y~poly(x,3,raw=TRUE),d) ; summary(m)
+plot(m)
+
+```
+
+
+## R
+
+```{r}
+
+
+```
+

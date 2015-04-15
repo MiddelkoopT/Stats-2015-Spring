@@ -1,0 +1,22 @@
+# Stats-2015-Spring-L12b
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+
+## R
+
+```{r}
+x <- rnorm(10) ; x
+a <- 5
+
+## computations
+a-x
+xb <- mean(a-x) ; xb
+
+## Data frame
+d <- data.frame(one=rnorm(10),two=rnorm(10))
+d$sum <- d$one+d$two
+d
+
+```
+
