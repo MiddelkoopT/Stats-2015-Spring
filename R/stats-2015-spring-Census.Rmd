@@ -1,0 +1,113 @@
+# Engineering Statistics
+IMSE 4410 Spring 2015. 
+Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Census Data Examples
+
+Data sources:
+
+* https://www.census.gov/
+* https://www.census.gov/main/www/access.html
+* https://www.census.gov/econ/currentdata/
+
+Copy link, paste, and change 'https://' to 'http://' Note the "skip" argument to skip the header information.
+
+### New Home Sales
+
+```{r}
+## Location of data:
+url <- "http://www.census.gov/econ/currentdata/export/csv?programCode=RESSALES&timeSlotType=12&startYear=1963&endYear=2015&categoryCode=ASOLD&dataTypeCode=TOTAL&geoLevelCode=US&adjusted=yes&errorData=no&internal=false"
+## Rows in meta-data
+metadata <- 6
+
+## Actual metadata.  Must include in report.
+read.table(url, sep="\t",nrows=metadata)
+
+d1 <- read.csv(url,header=TRUE,skip=metadata)
+names(d1)
+
+#d1$Period
+#d1$Value
+names(d1) <- c('Period','newhomes')
+
+plot(d1$newhomes)
+```
+
+
+### Retail Trade
+
+```{r}
+url <- "http://www.census.gov/econ/currentdata/export/csv?programCode=MRTS&timeSlotType=12&startYear=1992&endYear=2015&categoryCode=44X72&dataTypeCode=SM&geoLevelCode=US&adjusted=yes&errorData=no&internal=false"
+metadata <- 6
+read.table(url, sep="\t",nrows=metadata)
+
+d2 <- read.csv(url,header=TRUE,skip=metadata);
+names(d2)
+# [1] "Period" "Value" 
+
+#d2$Period
+#d2$Value
+names(d2) <- c('Period','trade')
+
+plot(d2$trade)
+```
+
+
+### Merge data
+
+```{r}
+length(d1$newhomes)
+
+length(d2$trade)
+
+d <- merge(d1,d2,by=c('Period'))
+nrow(d) # 288
+
+names(d)
+
+## verify a few.
+d[263,]
+
+row.names(d1) <- d1$Period
+d1['Sep-2001',]
+
+row.names(d2) <- d2$Period
+d2['Sep-2001',]
+```
+
+### Analyisis
+
+```{r}
+plot(newhomes~trade,d)
+m <- lm(newhomes~trade,d) ; s <- summary(m) ; s
+
+## Anything there?
+plot(m)
+```
+
+### New Residentail Construction, Housing Units Completed.
+
+```{r}
+url="http://www.census.gov/econ/currentdata/export/csv?programCode=RESCONST&timeSlotType=12&startYear=1959&endYear=2015&categoryCode=COMPLETIONS&dataTypeCode=TOTAL&geoLevelCode=US&adjusted=no&errorData=no&internal=false"
+metadata <- 6
+read.table(url, sep="\t",nrows=metadata)
+
+d3 <- read.csv(url,header=TRUE,skip=metadata);
+names(d3)
+
+#d3$Period
+#d3$Value
+names(d3) <- c('Period','completed')
+d <- merge(d,d3,by=c('Period'))
+names(d)
+
+plot(newhomes~completed,d)
+m <- lm(newhomes~completed,d) ; s <- summary(m) ; s
+plot(m)
+
+# Prediction
+predict(m, data.frame(completed=150))
+plot(newhomes~completed,d)
+abline(m$coef['(Intercept)'],m$coef['completed'])
+
+```
