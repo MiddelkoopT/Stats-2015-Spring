@@ -1,0 +1,26 @@
+# Stats-2015-Spring-L13a
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Chapter 13
+
+```{r}
+ch13 <- read.csv("data/5e/ch13.csv",header=TRUE)
+nrow(ch13)
+d <- na.omit(data.frame(y=ch13$Example13.1Strength,x=ch13$Example13.1Concentration))
+d$y
+d$x <- factor(d$x) ; d$x
+plot(y~x,d)
+N <- length(d$y) ; N
+a <- length(levels(d$x)) ; a
+n <- N/a ; n
+ysi <- aggregate(y~x,d,sum)$y ; ysi
+ybi <- aggregate(y~x,d,mean)$y ; ybi
+yij <- aggregate(y~x,d,c)$y ; yij 
+yb <- mean(yij) ; yb
+sse <- sum((yij-ybi)^2) ; sse
+sst <- sum((yij-yb)^2) ; sst
+ssf <- n*sum((ybi-yb)^2) ; ssf
+sse+ssf
+```
+

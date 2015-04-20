@@ -42,8 +42,6 @@ Know theses, understand theses, you should be able to think it out on a test.
 ```{r}
 ssr <- sum((yh-yb)^2) ; ssr # [1] 152.1271
 sse <- sum((y-yh)^2) ; sse # [1] 21.24982
-
-
 sst <- sum((y-yb)^2) ; sst # [1] 173.3769
 ssr + sse # [1] 173.3769
 ```
