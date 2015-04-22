@@ -26,9 +26,25 @@ ybi <- aggregate(y~x,d,mean)$y ; ybi
 yij <- aggregate(y~x,d,c) ; yij
 yij <- aggregate(y~x,d,c)$y ; yij
 
+sst <- sum((d$y-yb)^2) ; sst
 
-sse+ssf
+ybi <- aggregate(y~x,d,c) ; ybi
+ybi <- aggregate(y~x,d,c)$y ; ybi
 
+ybi <- aggregate(y~x,d,mean)$y ; ybi
+
+ssf <- n*sum((ybi-yb)^2) ; ssf
+
+sse <- sum((yij-ybi)^2) ; sse
+sst
+ssf + sse
+
+msf <- ssf/(a-1) ; msf
+mse <- sse/(a*(n-1)) ; mst
+F0 <- msf/mse ; F0
+
+
+m <- aov(y~x,d) ; summary(m)
 
 ```
 
