@@ -157,6 +157,9 @@ d$lwr <- p[,'lwr']
 d$upr <- p[,'upr']
 d[d$x==20,]
 
+## View boxplot
+boxplot(y~t,d)
+
 ## Model diagnostics.
 plot(m)
 ```
