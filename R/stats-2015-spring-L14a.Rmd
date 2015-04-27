@@ -1,0 +1,45 @@
+# Stats-2015-Spring-L13a
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Block Factor Experiments: Analysis of Variance (AoV) Chapter 13
+
+```{r}
+ch13 <- read.csv("data/5e/ch13.csv",header=TRUE)
+nrow(ch13)
+
+d <- na.omit(data.frame(y=ch13$Example13.5Strength,a=factor(ch13$Example13.5Chemical)))
+N <- nrow(d) ; N
+
+yij <- aggregate(y~a,d,c)$y ; yij
+b <- N/a ; b
+
+d$b <- rep(1:b,times=a) ; d$b
+
+d$i <- rep(1:a,each=b) ; d$i
+d$j <- rep(1:b,time=a) ; d$j
+d
+
+ybi <- aggregate(y~a,d,mean)$y ; ybi
+
+aggregate(y~b,d,c)
+ybj <- aggregate(y~b,d,mean)$y ; ybj
+
+yb <- mean(yij) ; yb
+mean(ybi) ; mean(ybj)  
+
+m <- aov(y~a+b,d) ; summary(m)
+
+sst <- sum((d$y-yb)^2) ; sst
+v <- anova(m) ; sum(v['Sum Sq'])
+
+ssf <- b*sum((ybi-yb)^2) ; ssf
+ssb <- a*sum((ybj-yb)^2) ; ssb
+sse <- sst-ssf-ssb ; sse
+
+sse <- sum((d$y - ybj[d$j] - ybi[d$i] +yb)^2) ; sse
+
+
+
+
+```

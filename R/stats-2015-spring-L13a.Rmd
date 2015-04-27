@@ -11,6 +11,8 @@ nrow(ch13)
 d <- c(1,2,3,2,3,3,1,3,2)
 f <- factor(d,labels=c('Apple','Banana','Carrot')) ; f
 #f+1
+s <- table(f) ; s
+s['Apple']
 
 d <- na.omit(data.frame(y=ch13$Example13.1Strength,x=ch13$Example13.1Concentration))
 N <- nrow(d) ; N
