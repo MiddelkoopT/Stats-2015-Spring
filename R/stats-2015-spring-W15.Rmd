@@ -1,6 +1,3 @@
----
-output: pdf_document
----
 # Engineering Statistics
 IMSE 4410 Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
@@ -41,7 +38,6 @@ b <- length(levels(d$b)) ; b # [1] 3
 
 ## What ?!
 levels(d$b)
-# [1] ""      "Dip"   "Spray"
 ```
 
 What is this?  Data quality is always an issue! Check. Check. Check.
@@ -50,7 +46,6 @@ Lets try a new approach, the na.omit does not work here. Sometimes simple is not
 
 ```{r}
 ## This is the correct way to block the data off, lets rename the columns at the same time.
-
 p <- ch14[c('Example14.1Adhesion','Example14.1Primer','Example14.1Method')]
 names(p) <- c('adhesion','primer','method')
 N <- nrow(na.omit(p)) ; p <- p[1:N,] ; N # [1] 18
