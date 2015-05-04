@@ -1,3 +1,6 @@
+---
+output: pdf_document
+---
 # Engineering Statistics
 IMSE 4410 Spring 2015. 
 Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
@@ -138,6 +141,66 @@ ssa+ssb+ssab+sse # [1] 10.71778
 summary(m)
 ```
 
+### Advanced R.
+This is where it gets tricky.  Do not expect this to be on the exam under R. However this will give you a good idea how indexing works in R.
+
+```{r}
+## To help us along lets first do the following:
+## Lets regenerate ybb again to remind us of what is going on
+bb <- aggregate(y~b,d,mean) ; bb
+
+## just show the y column
+ybb <- bb$y ; ybb
+
+## Now show the levels (Dip/Spray) for the data
+d$b
+
+## For example the we can store the 'spray' level in spray
+spray <- bb[2,'b'] ; spray
+
+## Extrat a single element
+ybb[spray]
+
+## now report the ybb for each row in b, they should match, (similar to previous method)
+ybb[d$b]
+
+## Symmetric on bb
+bb$y[d$b]
+
+## Same with the primer type.
+ba <- aggregate(y~a,d,mean) ; ba
+
+## Primer types for each row in d
+d$a
+
+## What is the corrisponding yba (similar to previous approach)
+yba[d$a]
+ba$y[d$a]
+
+## Back to what we were trying to do.
+## n * sum_i^a,sum_j^b (ybij-ybi-ybj-yb)^2
+bab
+
+## oh boy.
+bab$y
+
+## What is the yba for each row in bab
+bab$a
+
+yba
+
+## Same for yba
+yba[bab$a]
+
+bab$b
+
+ybb
+
+ybb[bab$b]
+
+## Here we go.
+ssab <- n*sum((bab$y-yba[bab$a]-ybb[bab$b]+yb)^2) ; ssab # [1] 0.2411111
+```
 
 ### 2k Factorial Design (Section 14-5)
 
@@ -216,63 +279,3 @@ mean(y) # [1] 11.0625
 sum((y-mean(y))^2) # [1] 92.9375
 ```
 
-### Advanced R.
-This is where it gets tricky.  Do not expect this to be on the exam under R. However this will give you a good idea how indexing works in R.
-
-```{r}
-## To help us along lets first do the following:
-## Lets regenerate ybb again to remind us of what is going on
-bb <- aggregate(y~b,d,mean) ; bb
-
-## just show the y column
-ybb <- bb$y ; ybb
-
-## Now show the levels (Dip/Spray) for the data
-d$b
-
-## For example the we can store the 'spray' level in spray
-spray <- bb[2,'b'] ; spray
-
-## Extrat a single element
-ybb[spray]
-
-## now report the ybb for each row in b, they should match, (similar to previous method)
-ybb[d$b]
-
-## Symmetric on bb
-bb$y[d$b]
-
-## Same with the primer type.
-ba <- aggregate(y~a,d,mean) ; ba
-
-## Primer types for each row in d
-d$a
-
-## What is the corrisponding yba (similar to previous approach)
-yba[d$a]
-ba$y[d$a]
-
-## Back to what we were trying to do.
-## n * sum_i^a,sum_j^b (ybij-ybi-ybj-yb)^2
-bab
-
-## oh boy.
-bab$y
-
-## What is the yba for each row in bab
-bab$a
-
-yba
-
-## Same for yba
-yba[bab$a]
-
-bab$b
-
-ybb
-
-ybb[bab$b]
-
-## Here we go.
-ssab <- n*sum((bab$y-yba[bab$a]-ybb[bab$b]+yb)^2) ; ssab # [1] 0.2411111
-```
