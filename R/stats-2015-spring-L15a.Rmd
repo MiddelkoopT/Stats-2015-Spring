@@ -5,13 +5,6 @@ Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
 ## 2k Factorial Design (Chapter 14)
 
 ```{r}
-ch14 <- read.csv("data/5e/ch14.csv",header=TRUE)
-nrow(ch14)
-
-d <- ch14[c('Example14.2Roughness','Example14.2Feed','Example14.2Depth','Example14.2Angle')]
-names(d) <- c('y','A','B','C')
-N <- nrow(na.omit(d)) ; d <- d[1:N,] ; N
-
-d
+d <- read.csv("table-14-13.csv",header=TRUE)
 
 ```
