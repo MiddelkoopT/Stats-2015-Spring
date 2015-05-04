@@ -6,5 +6,27 @@ Copyright 2015 by Timothy Middelkoop License CC by SA 3.0
 
 ```{r}
 d <- read.csv("table-14-13.csv",header=TRUE)
+t <- aggregate(y~A+B,d,sum) ; t
+
+t$I <- 1 
+t$AB <- t$A*t$B
+k <- 2
+n <- nrow(d)/(2^k) ; n 
+sum(t$y*t$AB)/(n*2^(k-1))
+
+sum(t$y*t$A)/(n*2^(k-1))
+sum(t$y*t$B)/(n*2^(k-1))
+
+sum(t$y*t$A)^2/(n*2^(k))
+sum(t$y*t$B)^2/(n*2^(k))
+sum(t$y*t$AB)^2/(n*2^(k))
+
+m <- aov(y~A*B,d) ; summary(m)
+
+t <- expand.grid(A=c(-1,+1),B=c(-1,+1),C=c(-1,+1),D=c(-1,+1)) 
+t$AB <- t$A*t$B ; t
+
+
+
 
 ```
