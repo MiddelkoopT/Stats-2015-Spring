@@ -1,0 +1,78 @@
+# Engineering Statistics 
+Engineering Statistics (IMSE 4410) Spring 2015. 
+Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
+
+## Homework H14
+
+Chpater 14 (5e)
+
+```{r}
+ch14 <- read.csv("data/5e/ch14.csv",header=TRUE) ; nrow(ch14)
+
+## 14-1: Light Quality
+p <- ch14[c('Ex14.1Glas','Ex14.1Phosphor','Ex14.1Brightness')]
+names(p) <- c('glass','phosphor','brightness')
+N <- nrow(na.omit(p)) ; p <- p[1:N,] ; N # [1] 18
+
+d <- data.frame(y=p$brightness,a=factor(p$glass),b=factor(p$phosphor))
+m <- aov(y~a*b,d) ; summary(m)
+
+a <- length(levels(d$a)) ; a
+b <- length(levels(d$b)) ; b
+n <- length(d$y)/a/b ; n 
+
+yb <- mean(d$y); yb
+
+sst <- sum((d$y-yb)^2) ; sst
+
+yba <- aggregate(y~a,d,mean)$y ; yba
+
+ybb <- aggregate(y~b,d,mean)$y ; ybb
+
+ssa <- b*n*sum((yba-yb)^2) ; ssa
+
+ssb <- a*n*sum((ybb-yb)^2) ; ssb
+
+## Compute replicate (k) mean
+bn <- aggregate(y~a+b,d,mean) ; bn
+
+## Merge data for row analysis.
+dd <- d
+dd$yba <- yba[d$a]
+dd$ybb <- ybb[d$b]
+dd <- merge(dd,bn,by=c('a','b'),suffixes=c('','bn'))
+dd$yb <- yb ; dd
+
+ssab <- sum((dd$ybn-dd$yba-dd$ybb+dd$yb)^2) ; ssab
+
+sse <- sum((dd$y-dd$ybn)^2) ; sse
+
+sst
+ssa+ssb+ssab+sse
+
+summary(m)
+
+plot(m)
+plot(y~a*b,d)
+
+
+## Example 14-2
+p <- ch14[c('Example14.2Depth','Example14.2Feed','Example14.2Angle','Example14.2Roughness')][1:nrow(na.omit(p)),]
+d <- data.frame(depth=factor(p$Example14.2Depth),feed=factor(p$Example14.2Feed),angle=factor(p$Example14.2Angle),roughness=p$Example14.2Roughness)
+m <- aov(roughness~depth*feed*angle,d) ; summary(m)
+
+## Exercise 14.3: Battery 
+
+p <- ch14[c('Ex14.3Life','Ex14.3Mat','Ex14.3Temp')]
+names(p) <- c('life','mat','temp')
+N <- nrow(na.omit(p)) ; p <- p[1:N,] ; N
+d <- data.frame(life=p$life,mat=factor(p$mat),temp=factor(p$temp))
+
+## Do this.  I got burnt not verifying my data (cost me 20 min.)
+d$y
+d$mat
+d$temp
+
+m <- aov(life~mat*temp,d) ; summary(m)
+
+```
