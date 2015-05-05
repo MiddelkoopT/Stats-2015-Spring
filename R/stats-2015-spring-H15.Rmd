@@ -4,7 +4,7 @@ Copyright 2013-2015 by Timothy Middelkoop License CC by SA 3.0
 
 ## Homework H15
 
-Chpater 15 (5e)
+Chpater 14 (5e)
 
 ```{r}
 ch14 <- read.csv("data/5e/ch14.csv",header=TRUE) ; nrow(ch14)
